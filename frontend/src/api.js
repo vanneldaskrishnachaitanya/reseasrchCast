@@ -1,4 +1,5 @@
-const BASE = "/api";
+// API Base URL - Uses environment variable in production, falls back to local proxy during development
+const BASE = import.meta.env.VITE_API_URL || "/api";
 
 export async function uploadPDF(file, voicePair = "FM") {
   const form = new FormData();
