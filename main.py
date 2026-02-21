@@ -44,12 +44,19 @@ app = FastAPI(
 
 # ── CORS Configuration (Crucial for Port 5173) ─────────────────────────────
 settings = get_settings()
+origins = [
+    "https://research-cast.vercel.app",
+    "https://research-cast-v9sa.vercel.app",
+    "http://localhost:5173",
+    "*"
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins     = settings.cors_origins_list,
-    allow_credentials = True,
-    allow_methods     = ["*"],
-    allow_headers     = ["*"],
+    allow_origins=origins,  # IMPORTANT
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # ── Routers ─────────────────────────────────────────────────────────────────
